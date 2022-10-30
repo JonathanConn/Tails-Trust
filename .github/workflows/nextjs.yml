@@ -3,10 +3,6 @@
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
 name: Deploy Next.js site to Pages
-
-defaults:
-  run:
-    working-directory: web
     
 on:
   # Runs on pushes targeting the default branch
@@ -30,6 +26,9 @@ concurrency:
 jobs:
   # Build job
   build:
+    defaults:
+      run:
+        working-directory: web
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
