@@ -28,7 +28,7 @@ export default function Home() {
           <Link href={{pathname: "/forms", query: {formType: "basic"}}}>
             <h2 className={styles.card}> Basic </h2>
           </Link>
-          <Link href={{pathname: "/forms", query: {formType: "basic"}}}>
+          <Link href={{pathname: "/forms", query: {formType: "revocable"}}}>
             <h2 className={styles.card}> Revocable</h2>
           </Link>
           <Link href={{pathname: "/forms", query: {formType: "tontine"}}}>
