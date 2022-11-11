@@ -1,7 +1,6 @@
-import BasicForm from '../components/forms/basicForm'
-import TontineForm from '../components/forms/tontineForm'
-import RevocableForm from '../components/forms/revocableForm';
-
+import BasicForm from './basicForm'
+import TontineForm from './tontineForm'
+import RevocableForm from './revocableForm';
 import { useRouter } from 'next/router'
 
 export default function FormsPage() {
