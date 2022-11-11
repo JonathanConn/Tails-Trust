@@ -27,7 +27,6 @@ const callCreateAPI = async (event: any) => {
 }
 
 
-
 export default function BasicForm() {
     return (
         <main className={styles.main}>

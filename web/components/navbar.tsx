@@ -4,19 +4,15 @@ import styles from "../styles/Navbar.module.css"
 import { useAccContext } from "../context/Account"
 
 export default function Navbar() {
-    const {accountContext, setAccountContext} = useAccContext();
+    const { accountContext, setAccountContext } = useAccContext();
 
     const { status, connect, account, chainId, ethereum } = useMetaMask();
 
     function handleMMText() {
         if (status === "connected") {
-            setAccountContext(account);
-            if (accountContext) {
-                return accountContext.slice(0, 6) + "..." + accountContext.slice(-4);
-            }
-            
+            return account.slice(0, 6) + "..." + account.slice(-4);
         } else {
-            return "Connect";
+            return "Connect to MetaMask";
         }
     }
 
@@ -24,6 +20,7 @@ export default function Navbar() {
         console.log(status);
         if (status === "notConnected") {
             connect();
+            setAccountContext(account);
         }
     }
 

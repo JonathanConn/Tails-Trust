@@ -13,7 +13,7 @@ const initAccContext = {
 const AccContext = createContext <AccContextType> (initAccContext);
 
 
-export function AccountPovider( { children } : any) {
+export function AccountProvider( { children } : any) {
     const [accountContext, setAccountContext] = useState <string | null> (null);
 
     return (
