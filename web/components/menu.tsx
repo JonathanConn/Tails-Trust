@@ -20,7 +20,7 @@ export default function Menu() {
 
         <div className={styles.grid}>
 
-          <Link href={{pathname: "/forms"}}>
+          <Link href={{pathname: "/forms", query: {formType: "basic"}}}>
             <h2 className={styles.card}> Basic </h2>
           </Link>
           <Link href={{pathname: "/forms", query: {formType: "revocable"}}}>

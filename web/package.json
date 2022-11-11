@@ -11,6 +11,7 @@
   "dependencies": {
     "alchemy-sdk": "^2.2.0",
     "ethers": "^5.7.2",
+    "formidable-serverless": "^1.1.1",
     "fs": "^0.0.1-security",
     "metamask-react": "^2.4.0",
     "next": "^13.0.3",
