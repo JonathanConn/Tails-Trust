@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 import { ethers } from 'ethers'
-import { useAccContext } from '../context/AccountProvider';
+import { useEffect, useState } from "react";
 
 export default function Forms({ children }: any) {
+    const [provider, setProvider] = useState<any>(null);
 
     const router = useRouter()
     const { formType } = router.query
@@ -30,19 +31,26 @@ export default function Forms({ children }: any) {
     }
 
 
-    const provider = new ethers.providers.Web3Provider((window as any).ethereum, "any");
     const abi = require('../public/TrustFactory.json').abi;
+    useEffect(() => {
+        setProvider(new ethers.providers.Web3Provider((window as any).ethereum, "any"));       
+    }, [])
+    
+
 
     const create = async (event: any) => {
         event.preventDefault();
+        if (!provider) return
 
         const time = (formType === 'tontine') ?  event.target.input3.value as Number : new Date(event.target.input3.value).getTime();
         const beneficiary = event.target.benInput.value as string;
         const amount = ethers.utils.parseEther(event.target.amountInput.value);
 
+
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
 
+        
         const factoryContract = new ethers.Contract(
             process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
             abi as ethers.ContractInterface,
