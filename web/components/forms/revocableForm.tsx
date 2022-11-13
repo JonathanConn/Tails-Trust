@@ -4,7 +4,7 @@ import { useAccContext } from '../../context/AccountProvider';
 export default function RevocableForm() {
 
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    const provider = new ethers.providers.Web3Provider( (window as any).ethereum, "any");
     const abi = require('../../public/TrustFactory.json').abi;
     const account = useAccContext().accountContext?.toString();
     // console.log(useAccContext().accountContext);
