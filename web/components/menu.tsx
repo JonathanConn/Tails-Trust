@@ -1,37 +1,32 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 export default function Menu() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Trust</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          TailsTrust
-        </h1>
+      <div className="container my-10 mockup-code">
+        <pre data-prefix="$"><code>Create Trust</code></pre>
+        <pre data-prefix=">" className="text-warning"><code>Minting...</code></pre>
+        <pre data-prefix=">" className="text-success"><code>Done!</code></pre>
+      </div>
 
-        <p className={styles.description}>
-          <code className={styles.code}>Make your own trust</code>
-        </p>
+      <div className="container">
+        <div className="grid gap-3 grid-cols-3 px-5">
 
-        <div className={styles.grid}>
+          <Link className='btn' href={{ pathname: "/forms", query: { formType: "basic" } }}>Basic</Link>
 
-          <Link href={{pathname: "/forms", query: {formType: "basic"}}}>
-            <h2 className={styles.card}> Basic </h2>
-          </Link>
-          <Link href={{pathname: "/forms", query: {formType: "revocable"}}}>
-            <h2 className={styles.card}> Revocable</h2>
-          </Link>
-          <Link href={{pathname: "/forms", query: {formType: "tontine"}}}>
-            <h2 className={styles.card}>Tontine</h2>
-          </Link>
+          <Link className='btn' href={{ pathname: "/forms", query: { formType: "revocable" } }}>Revocable</Link>
+
+          <Link className='btn' href={{ pathname: "/forms", query: { formType: "tontine" } }}>Tontine</Link>
 
         </div>
-      </main>
+      </div>
+
+
     </div>
   )
 }

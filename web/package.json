@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "alchemy-sdk": "^2.2.0",
+    "daisyui": "^2.39.1",
     "ethers": "^5.7.2",
     "formidable-serverless": "^1.1.1",
     "fs": "^0.0.1-security",

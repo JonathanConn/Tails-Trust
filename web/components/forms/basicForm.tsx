@@ -6,6 +6,7 @@ import { useAccContext } from '../../context/AccountProvider';
 
 export default function BasicForm() {
 
+
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     const abi = require('../../public/TrustFactory.json').abi;
     const account = useAccContext().accountContext?.toString();
@@ -25,36 +26,43 @@ export default function BasicForm() {
             abi as ethers.ContractInterface,
             signer
         );
-        
+
         factoryContract.createBasicTrust(
-            beneficiary, 
-            time, 
+            beneficiary,
+            time,
             { value: amount })
-        .then(console.log)
-        .catch(console.log);
+            .then(console.log)
+            .catch(console.log);
     }
 
 
     return (
-        <main className={styles.main}>
-            <h1 className={styles.title}>
-                Basic Trust
-            </h1>
-            <p className={styles.description}>
-                <code className={styles.code}>Beneficiary can withdrawl after unlock date.</code>
-            </p>
-            <div className={styles.grid}>
+        <div className="flex flex-col justify-center items-center text-center">
+
+                <a className="text-3xl font-bold my-10">Create a Basic Trust</a>
+
                 <form id="trustForm" onSubmit={callCreateAPI}>
-                    {/* <form action="/api/trust" method="post"> */}
-                    <input id="amountInput" className={styles.card} type="text" placeholder="Amount" /><br></br>
-                    <input id="benInput" className={styles.card} type="text" placeholder="Beneficiary" /><br></br>
 
-                    <label>Unlock date: </label>
-                    <input id="lockInput" className={styles.card} type="date" /><br></br>
+                    <label className="input-group input-group-lg">
+                        <input id="benInput" type="text" placeholder="0x00" className="input input-bordered input-lg" />
+                        <span>Inheritor</span>
+                    </label>
 
-                    <button className={styles.center}>Create</button>
+                    <label className="input-group py-5 input-group-lg">
+                        <input id="amountInput" type="text" placeholder="0.01" className="input input-bordered input-lg" />
+                        <span>ETH</span>
+                    </label>
+
+                    <label className="input-group input-group-lg">
+                        <input id="lockInput" type="date" className="input input-bordered input-lg" />
+                        <span>Unlock</span>
+                    </label>
+
+                    <br></br>
+                    <a className='btn'>Create</a>
+
                 </form>
-            </div>
-        </main>
+
+        </div>
     )
 }
