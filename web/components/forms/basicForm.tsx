@@ -44,17 +44,17 @@ export default function BasicForm() {
                 <form id="trustForm" onSubmit={callCreateAPI}>
 
                     <label className="input-group input-group-lg">
-                        <input id="benInput" type="text" placeholder="0x00" className="input input-bordered input-lg" />
+                        <input id="benInput" type="text" placeholder="0x00" className="input input-bordered input-lg" required/>
                         <span>Inheritor</span>
                     </label>
 
                     <label className="input-group py-5 input-group-lg">
-                        <input id="amountInput" type="text" placeholder="0.01" className="input input-bordered input-lg" />
+                        <input id="amountInput" type="text" placeholder="0.01" className="input input-bordered input-lg" required/>
                         <span>ETH</span>
                     </label>
 
                     <label className="input-group input-group-lg">
-                        <input id="lockInput" type="date" className="input input-bordered input-lg" />
+                        <input id="lockInput" type="date" className="input input-bordered input-lg" required/>
                         <span>Unlock</span>
                     </label>
 
