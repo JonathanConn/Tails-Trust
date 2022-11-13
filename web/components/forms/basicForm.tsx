@@ -1,29 +1,37 @@
 import styles from '../../styles/Home.module.css'
 import { ethers, Transaction } from 'ethers'
-import FactoryABI from '../../public/TrustFactory.json'
+
+import { useAccContext } from '../../context/AccountProvider';
+
 
 export default function BasicForm() {
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-
+    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    const abi = require('../../public/TrustFactory.json').abi;
+    const account = useAccContext().accountContext?.toString();
+    // console.log(useAccContext().accountContext);
     const callCreateAPI = async (event: any) => {
         event.preventDefault();
 
-        const time = new Date(event.target.lockInput.value).getTime().toString();
-        const beneficiary = event.target.benInput.value;
-        const amount = event.target.amountInput.value;
+        const time = new Date(event.target.lockInput.value).getTime();
+        const beneficiary = event.target.benInput.value as string;
+        const amount = ethers.utils.parseEther(event.target.amountInput.value);
 
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
+
         const factoryContract = new ethers.Contract(
             process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-            FactoryABI.abi,
+            abi as ethers.ContractInterface,
             signer
         );
-
-        await factoryContract.createBasicTrust(time, beneficiary, { value: amount })
-        .then( (tx: Transaction) => { console.log(tx); })
-        .catch( (e: ErrorEvent) => { console.log(e) });
+        
+        factoryContract.createBasicTrust(
+            beneficiary, 
+            time, 
+            { value: amount })
+        .then(console.log)
+        .catch(console.log);
     }
 
 
