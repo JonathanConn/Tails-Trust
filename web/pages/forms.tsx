@@ -33,7 +33,11 @@ export default function Forms({ children }: any) {
 
     const abi = require('../public/TrustFactory.json').abi;
     useEffect(() => {
-        setProvider(new ethers.providers.Web3Provider((window as any).ethereum, "any"));       
+        try {
+            setProvider(new ethers.providers.Web3Provider((window as any).ethereum, "any"));     
+        } catch (e) {  
+            console.log(e);
+        }
     }, [])
     
 
