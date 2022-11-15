@@ -45,11 +45,11 @@ export default function Navbar() {
                         <li><Link href={{ pathname: "/forms", query: { formType: "basic" } }}>Basic</Link></li>
                         <li><Link href={{ pathname: "/forms", query: { formType: "revocable" } }}>Revocable</Link></li>
                         <li><Link href={{ pathname: "/forms", query: { formType: "tontine" } }}>Tontine</Link></li>
-                        <li><a>About</a></li>
-                        <li><a>Contact</a></li>
+                        {/* <li><a>About</a></li>
+                        <li><a>Contact</a></li> */}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">TailsTrust</a>
+                <Link href={{ pathname: "/" }} className="btn btn-ghost normal-case text-xl" >TailsTrust</Link>
             </div>
             <div className="navbar-end">
                 <a className="btn" onClick={handleLogin}>{handleMMText()}</a>
