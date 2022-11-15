@@ -40,7 +40,10 @@ export default function Forms({ children }: any) {
 
     const create = async (event: any) => {
         event.preventDefault();
-        if (!provider) return
+        if (provider == undefined) {
+            console.log('no provider')
+            return
+        }
 
         const time = (formType === 'tontine') ?  event.target.input3.value as Number : new Date(event.target.input3.value).getTime();
         const beneficiary = event.target.benInput.value as string;
@@ -93,7 +96,7 @@ export default function Forms({ children }: any) {
                 </label>
 
                 <br></br>
-                <a className='btn'>Create</a>
+                <button className='btn'>Create</button>
 
             </form>
 
